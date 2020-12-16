@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat Da Burger!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-warning">
+        <div class="row p-3">
+            <div class="col d-flex justify-content-center">
+                <h1 class="pageTitle">Burger Shop</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <img src="./assets/burger.png" alt="Image of a cartoon burger">
+            </div>
+        </div>
+        <div class="row mt-0">
+            <div class="col d-flex justify-content-center">
+                <h3>Eat Da Burger!</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bg-secondary d-flex justify-content-center p-3">
+                <form action="submit">
+                    <input type="text">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        {{#each burgerData}}
+        <div class="row">
+            <div class="col bg-danger d-flex justify-content-center p-3 resultShow">
+                <div class="col-4 bg-secondary">
+                    <h4>{{burgerName}}</h4>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-6 bg-primary">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

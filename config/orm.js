@@ -6,25 +6,23 @@ function selectAll() {
       if (err) {
         reject(err);
       } else {
-        console.log(res);
         resolve(res);
       }
     });
   });
 }
 
-function insertOne(response) {
+function insertOne(burgerName) {
   return new Promise(function (resolve, reject) {
     connection.query(
       `INSERT INTO
       burgers (burgerName, devoured)
   VALUES
-      ('${response.name}', ${response.devoured});`,
+      ('${burgerName}', 0);`,
       function (err, res) {
         if (err) {
           reject(err);
         } else {
-          console.log(res);
           resolve(res);
         }
       }
@@ -38,10 +36,11 @@ function updateOne(response) {
       function (err, res) {
         if (err) reject(err);
         else {
-          console.log(res);
           resolve(res);
         }
       }
     );
   });
 }
+
+module.exports = { selectAll, insertOne, updateOne };

@@ -1,0 +1,74 @@
+<div class="container vh-100 bg-warning">
+    <div class="row p-3">
+        <div class="col d-flex justify-content-center">
+            <h1 class="pageTitle">Burger Shop</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center">
+            <img src="./assets/burger.png" alt="Image of a cartoon burger"></img>
+        </div>
+    </div>
+    <div class="row mt-0">
+        <div class="col d-flex justify-content-center">
+            <h3>Eat Da Burger!</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center p-3">
+            <form action="submit" class="burgerForm">
+                <input type="text" class="burgerInput">
+                <button type="submit" class="burgerSubmit">Submit</button>
+            </form>
+        </div>
+    </div>
+    {{#each burgerData}}
+    {{#if devoured}}
+    <div class="row">
+        <div class="col d-flex justify-content-center p-3 resultShow">
+            <div class="col-4">
+            </div>
+            <div class="col-2">
+                <button class="deleteButton bg-danger" data-id='{{id}}'>Delete!</button>
+            </div>
+            <div class="col-6">
+                <h4>{{burgerName}}</h4>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="row">
+        <div class="col d-flex justify-content-center p-3 resultShow">
+            <div class="col-4">
+                <h4>{{burgerName}}</h4>
+            </div>
+            <div class="col-2">
+                <button class="devourButton bg-info" data-id='{{id}}'>Devour!</button>
+            </div>
+            <div class="col-6">
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('.burgerForm').submit(function (event) {
+        event.preventDefault()
+        const burgerName = $('.burgerInput').val()
+        const data = { burgerName: burgerName }
+        if (burgerName.length < 1) {
+            $('.burgerInput').addClass('lengthWarning')
+        } else {
+            $('.burgerInput').removeClass('lengthWarning')
+            console.log(burgerName)
+            $.ajax({
+                url: '/burgers',
+                method: 'POST',
+                data: data
+            })
+        }
+    })
+</script>
