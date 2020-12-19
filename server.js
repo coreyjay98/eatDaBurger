@@ -18,7 +18,7 @@ app.set("view engine", "handlebars");
 app.use(express.static(__dirname + "/views"));
 app.use("/", burgersController);
 
-app.listen(PORT, function async () {
-   const create = await createTable(); 
+app.listen(PORT, async function () {
+  const create = await createTable();
   console.log("Listening on server" + PORT);
 });
