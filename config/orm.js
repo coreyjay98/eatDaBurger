@@ -32,7 +32,20 @@ function insertOne(burgerName) {
 function updateOne(response) {
   return new Promise(function (resolve, reject) {
     connection.query(
-      `UPDATE burgers SET devoured = false WHERE id = 1`,
+      `UPDATE burgers SET devoured = true WHERE id = ${response.id}`,
+      function (err, res) {
+        if (err) reject(err);
+        else {
+          resolve(res);
+        }
+      }
+    );
+  });
+}
+function deleteOne(response) {
+  return new Promise(function (resolve, reject) {
+    connection.query(
+      `DELETE from burgers WHERE id = ${response.id}`,
       function (err, res) {
         if (err) reject(err);
         else {
@@ -43,4 +56,4 @@ function updateOne(response) {
   });
 }
 
-module.exports = { selectAll, insertOne, updateOne };
+module.exports = { selectAll, insertOne, updateOne, deleteOne };

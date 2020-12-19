@@ -26,12 +26,12 @@
     {{#if devoured}}
     <div class="row">
         <div class="col d-flex justify-content-center p-3 resultShow">
-            <div class="col-4">
+            <div class="col-5">
             </div>
-            <div class="col-2">
+            <div class="col">
                 <button class="deleteButton bg-danger" data-id='{{id}}'>Delete!</button>
             </div>
-            <div class="col-6">
+            <div class="col-5">
                 <h4>{{burgerName}}</h4>
             </div>
         </div>
@@ -39,13 +39,13 @@
     {{else}}
     <div class="row">
         <div class="col d-flex justify-content-center p-3 resultShow">
-            <div class="col-4">
+            <div class="col-5">
                 <h4>{{burgerName}}</h4>
             </div>
-            <div class="col-2">
+            <div class="col">
                 <button class="devourButton bg-info" data-id='{{id}}'>Devour!</button>
             </div>
-            <div class="col-6">
+            <div class="col-5">
             </div>
         </div>
     </div>
@@ -67,8 +67,35 @@
             $.ajax({
                 url: '/burgers',
                 method: 'POST',
-                data: data
+                data: data,
+                success: function () {
+                    window.location.reload()
+                }
             })
         }
+    })
+    $('.devourButton').on('click', event => {
+        event.preventDefault();
+        const id = event.target.getAttribute('data-id')
+        console.log(id)
+        $.ajax({
+            url: '/burgers',
+            method: 'PUT',
+            data: { 'id': id }
+        }).then(() => {
+            window.location.reload()
+        })
+    })
+    $('.deleteButton').on('click', event => {
+        event.preventDefault();
+        const id = event.target.getAttribute('data-id')
+        console.log(id)
+        $.ajax({
+            url: '/burgers',
+            method: 'DELETE',
+            data: { 'id': id }
+        }).then(() => {
+            window.location.reload()
+        })
     })
 </script>
