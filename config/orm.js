@@ -7,7 +7,7 @@ function createTable() {
       drop schema if exists burgersDB;
       create schema burgersDB;
       use burgersDB;
-         CREATE TABLE burgers (
+         CREATE TABLE to2ps6do1cj51c8j.burgers (
              id INT NOT NULL AUTO_INCREMENT,
              burgerName VARCHAR(255) NOT NULL,
              devoured TINYINT(0),
