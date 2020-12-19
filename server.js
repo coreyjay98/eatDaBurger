@@ -3,6 +3,7 @@ const ck = require("ckey");
 const { renderBurgers } = require("./models/burger");
 const burgersController = require("./controllers/burgersController");
 const exphbs = require("express-handlebars");
+const { createTable } = require("./config/orm");
 const PORT = preocess.env.PORT || ck.port;
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(express.static(__dirname + "/views"));
 app.use("/", burgersController);
 
 app.listen(PORT, function () {
+  createTable();
   console.log("Listening on server 3000");
 });

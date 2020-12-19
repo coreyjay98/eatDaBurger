@@ -1,5 +1,27 @@
 const connection = require("./connection");
 
+function createTable() {
+  return new Promise(function (resolve, reject) {
+    connection.query(
+      `
+      DROP TABLE IF EXISTS burgers;
+    CREATE TABLE burgers (
+        id INT NOT NULL AUTO_INCREMENT,
+        burgerName VARCHAR(255) NOT NULL,
+        devoured TINYINT(0),
+        PRIMARY KEY(id)
+    )`,
+      function (err, res) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(res);
+        }
+      }
+    );
+  });
+}
+
 function selectAll() {
   return new Promise(function (resolve, reject) {
     connection.query("SELECT * FROM burgers", function (err, res) {
@@ -56,4 +78,4 @@ function deleteOne(response) {
   });
 }
 
-module.exports = { selectAll, insertOne, updateOne, deleteOne };
+module.exports = { selectAll, insertOne, updateOne, deleteOne, createTable };
