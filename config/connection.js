@@ -11,4 +11,4 @@ const connection = mysql.createConnection({
   url: DATABASE_URL,
 });
 
-module.exports = { connection /* process */ };
+module.exports = connection;

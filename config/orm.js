@@ -1,4 +1,4 @@
-const { connection } = require("./connection");
+const connection = require("./connection");
 
 function createTable() {
   return new Promise(function (resolve, reject) {
