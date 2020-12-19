@@ -3,7 +3,7 @@ const ck = require("ckey");
 const { renderBurgers } = require("./models/burger");
 const burgersController = require("./controllers/burgersController");
 const exphbs = require("express-handlebars");
-const PORT = ck.port;
+const PORT = preocess.env.PORT || ck.port;
 const app = express();
 
 // sets up the express app to handle data parsing
