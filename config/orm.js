@@ -4,9 +4,6 @@ function createTable() {
   return new Promise(function (resolve, reject) {
     connection.query(
       `
-      drop schema if exists burgersDB;
-      create schema burgersDB;
-      use burgersDB;
          CREATE TABLE burgers (
              id INT NOT NULL AUTO_INCREMENT,
              burgerName VARCHAR(255) NOT NULL,
