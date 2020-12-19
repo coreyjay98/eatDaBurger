@@ -6,13 +6,12 @@ function createTable() {
       `
       create schema burgersDB;
       use burgersDB;
-      DROP TABLE IF EXISTS burgers;
     CREATE TABLE burgers (
         id INT NOT NULL AUTO_INCREMENT,
         burgerName VARCHAR(255) NOT NULL,
         devoured TINYINT(0),
         PRIMARY KEY(id)
-    )`,
+    );`,
       function (err, res) {
         if (err) {
           reject(err);
