@@ -4,11 +4,11 @@ const ck = require("ckey");
 const password = ck.password;
 const DATABASE_URL = ck.DATABASE_URL;
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
+  host: "n2o93bb1bwmn0zle.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+  user: "ue6j2q6gugp5ggfu",
   password: password,
   database: "burgersDB",
-  url: DATABASE_URL,
+  port: 3306,
 });
 
 module.exports = connection;
